@@ -1,0 +1,57 @@
+// compass CSS3 module
+@import "compass";
+
+// CSS reset
+@import "_reset.scss";  // notice: COMPASS framework has its own reset. Do @import "compass/reset"
+
+/**************** Your styles here *********************/
+body {
+  background: #eee;
+  
+}
+
+#wrapper {
+  padding: 50px;
+}
+
+.myBtn {
+  // class variables
+  $shadowHeight: 4px;
+
+  // class styles
+  position: relative;
+  display: inline-block;
+  background-color: #97c3ed;
+  @include background-image(linear-gradient(top, #bcdeff, #8cb5db));  // generate cross-browser gradient code
+  border: solid 1px #415466;
+  @include border-radius(4px);
+  padding: 5px 10px;
+  font: {
+    size: 14px;
+    weight: bold;
+  }
+  color: #752a26;
+  @include text-shadow(1px 1px 0 #e5f2ff);
+  @include box-shadow(0px $shadowHeight 0px 0px #627e99);
+
+  &:active {
+    top: $shadowHeight;
+    box-shadow: none;  
+  } 
+}
+
+.myBtn-split {    // better than remembering to write class="myBtn myBtn-split" on split button elements
+  @extend .myBtn;
+  
+  padding-right: 20px;
+  
+  .split {
+    position:absolute;
+    right: 3px;
+    
+    &:after {
+      content: "\25BC";
+    }
+  }
+ 
+}
